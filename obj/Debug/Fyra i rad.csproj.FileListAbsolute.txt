@@ -1,0 +1,10 @@
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\bin\Debug\Fyra i rad.exe.config
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\bin\Debug\Fyra i rad.exe
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\bin\Debug\Fyra i rad.pdb
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\obj\Debug\Fyra i rad.csprojAssemblyReference.cache
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\obj\Debug\Fyra_i_rad.Form1.resources
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\obj\Debug\Fyra_i_rad.Properties.Resources.resources
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\obj\Debug\Fyra i rad.csproj.GenerateResource.cache
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\obj\Debug\Fyra i rad.csproj.CoreCompileInputs.cache
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\obj\Debug\Fyra i rad.exe
+C:\Users\0202majo\source\repos\Fyra i rad\Fyra i rad\obj\Debug\Fyra i rad.pdb
