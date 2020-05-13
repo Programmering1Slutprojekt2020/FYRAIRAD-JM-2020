@@ -12,14 +12,10 @@ namespace Fyra_i_rad
 {
     public partial class Form1 : Form
     {
-        
-        int s = 0;
-        int s2 = 0;
+
+        int[,] fältxy = new int[8, 8];
         int klocka = 0;
-        int[] fältx = new int[100];
-        int[] fälty = new int[100];
-        int[] fältx2 = new int[100];
-        int[] fälty2 = new int[100];
+        bool s1 = true; 
 
         public Form1()
         {
@@ -48,14 +44,23 @@ namespace Fyra_i_rad
                 }
 
             }
-            for (int i = 0; i < s; i++) 
+
+            
+
+            for (int x = 0; x < 8; x++)
             {
-                g.DrawEllipse(p3, fältx[i], fälty[i], 45, 45);
-                
-            }
-            for (int i = 0; i < s2; i++)
-            {
-                g.DrawEllipse(p2, fältx2[i], fälty2[i], 45, 45);
+                for (int y = 0; y < 8; y++)
+                {
+                    if (fältxy[x, y] == 1)
+                    {
+                        g.DrawEllipse(p2, x * 50, y * 50, 48, 48);
+                    }
+                    if (fältxy[x, y] == 2)
+                    {
+                        g.DrawEllipse(p3, x * 50, y * 50, 48, 48);
+                    }
+
+                }
 
             }
 
@@ -63,35 +68,27 @@ namespace Fyra_i_rad
 
         private void Panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = e.X / 50 * 50;
-            int y = e.Y / 50 * 50;
-
-            if (klocka % 2 == 0)
+            if (s1)
             {
-                if (!(fältx.Contains(x) && fälty.Contains(y)))
+                if (fältxy[e.X / 50, e.Y / 50] == 0)
                 {
-
-                    fältx[s] = x;
-                    fälty[s] = y;
-                    s++;
-                    
+                    fältxy[e.X / 50, e.Y / 50] = 1;
+                    klocka++;
+                    s1 = false;
                 }
             }
             else
             {
-                if (!(fältx2.Contains(x) && fälty2.Contains(y)))
+                if (fältxy[e.X / 50, e.Y / 50] == 0)
                 {
-                    fältx2[s2] = x;
-                    fälty2[s2] = y;
-                    s2++;
-                    
+                    fältxy[e.X / 50, e.Y / 50] = 2;
+                    s1 = true;
                 }
-                
             }
 
 
 
-            klocka++;
+
             panel1.Invalidate();
             
         }
