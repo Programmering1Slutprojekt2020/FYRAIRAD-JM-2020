@@ -13,8 +13,8 @@ namespace Fyra_i_rad
     public partial class Form1 : Form
     {
 
-        int[,] fältxy = new int[8, 8];
-        int klocka = 0;
+        int[,] fältxy = new int[200, 200];
+        bool win = false;
         bool s1 = true; 
 
         public Form1()
@@ -63,17 +63,23 @@ namespace Fyra_i_rad
                 }
 
             }
+            
+            
+                
+
 
         }
 
         private void Panel1_MouseClick(object sender, MouseEventArgs e)
         {
+            int x = e.X / 50;
+            int y = e.Y / 50;
             if (s1)
             {
                 if (fältxy[e.X / 50, e.Y / 50] == 0)
                 {
                     fältxy[e.X / 50, e.Y / 50] = 1;
-                    klocka++;
+                    
                     s1 = false;
                 }
             }
@@ -85,6 +91,90 @@ namespace Fyra_i_rad
                     s1 = true;
                 }
             }
+
+            //Analys horisontellt
+            //till höger
+            int totalirad = 0; 
+            int steg = 1; 
+            while(fältxy[x,y] == fältxy[x +steg, y])
+            {
+                steg++;
+            }
+            totalirad = steg;
+            //till vänster
+            steg = 1;
+            while (fältxy[x, y] == fältxy[x - steg, y])
+            {
+                steg++;
+            }
+            totalirad += steg-1;
+            //check om det var fyra stycken
+            if(totalirad >= 4)
+            {
+                win = true;
+
+            }
+
+
+            //analys vertikalt
+            
+            while (fältxy[x, y] == fältxy[x , y+steg])
+            {
+                steg++;
+            }
+            totalirad = steg;
+            //nedåt
+            steg = 1;
+            while (fältxy[x, y] == fältxy[x , y - steg])
+            {
+                steg++;
+            }
+            totalirad += steg - 1;
+            if(totalirad >=4)
+            {
+                win = true;
+                    
+            }
+
+            //analys diagonalt
+
+            while (fältxy[x, y] == fältxy[x+steg, y + steg])
+            {
+                steg++;
+            }
+            totalirad = steg;
+            //snett nedåt
+            steg = 1;
+            while (fältxy[x, y] == fältxy[x-steg, y - steg])
+            {
+                steg++;
+            }
+            totalirad += steg - 1;
+            if(totalirad >=4)
+            {
+                win = true;
+            }
+
+            if (win)
+            {
+                if (s1)//spelare 2 vinner
+                {
+                    panel1.Visible = false;
+                    pictureBox22wins.Visible = true;
+                }
+                else//spelare 1 vinner
+                {
+                    panel1.Visible = false;
+                    pictureBox11wins.Visible = true;
+                }
+
+            }
+
+
+
+
+
+
 
 
 
