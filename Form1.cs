@@ -13,7 +13,7 @@ namespace Fyra_i_rad
     public partial class Form1 : Form
     {
 
-        int[,] fältxy = new int[200, 200];
+        int[,] fältxy = new int[9, 9];
         bool win = false;
         bool s1 = true; 
 
@@ -94,65 +94,69 @@ namespace Fyra_i_rad
 
             //Analys horisontellt
             //till höger
-            int totalirad = 0; 
+            List<int> totalirad = new List<int>(); 
             int steg = 1; 
             while(fältxy[x,y] == fältxy[x +steg, y])
             {
                 steg++;
             }
-            totalirad = steg;
+            totalirad.Add(steg);
             //till vänster
             steg = 1;
-            while (fältxy[x, y] == fältxy[x - steg, y])
+            while (x-steg >= 0 && fältxy[x, y] == fältxy[x - steg, y] )
             {
                 steg++;
             }
-            totalirad += steg-1;
-            //check om det var fyra stycken
-            if(totalirad >= 4)
-            {
-                win = true;
-
-            }
+            totalirad.Add(steg);
+            
 
 
             //analys vertikalt
-            
+            steg = 1;
             while (fältxy[x, y] == fältxy[x , y+steg])
             {
                 steg++;
             }
-            totalirad = steg;
+            totalirad.Add(steg);
             //nedåt
             steg = 1;
-            while (fältxy[x, y] == fältxy[x , y - steg])
+            while (y - steg >= 0 && fältxy[x, y] == fältxy[x , y - steg])
             {
                 steg++;
             }
-            totalirad += steg - 1;
-            if(totalirad >=4)
-            {
-                win = true;
-                    
-            }
+            totalirad.Add(steg);
+            
 
             //analys diagonalt
-
+            steg = 1;
             while (fältxy[x, y] == fältxy[x+steg, y + steg])
             {
                 steg++;
             }
-            totalirad = steg;
+            totalirad.Add(steg);
             //snett nedåt
             steg = 1;
-            while (fältxy[x, y] == fältxy[x-steg, y - steg])
+            while (x - steg >= 0 && y - steg >= 0 && fältxy[x, y] == fältxy[x-steg, y - steg])
             {
                 steg++;
             }
-            totalirad += steg - 1;
-            if(totalirad >=4)
+            totalirad.Add(steg);
+            steg = 1;
+            while (x - steg >= 0 && fältxy[x, y] == fältxy[x - steg, y + steg])
+            {
+                steg++;
+            }
+            totalirad.Add(steg);
+            steg = 1;
+            while (y - steg >= 0 && fältxy[x, y] == fältxy[x + steg, y - steg])
+            {
+                steg++;
+            }
+            totalirad.Add(steg);
+            if (totalirad.Max() >= 4)
             {
                 win = true;
+
             }
 
             if (win)
